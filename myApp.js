@@ -1,3 +1,4 @@
+const env = require('dotenv').config()
 var express = require('express');
 var app = express();
 var path = require('path')
@@ -12,15 +13,16 @@ app.get('/', (req, res) => {
 })
 
 app.get('/json', (req, res) => {
+  let message = 'Hello json'
+  process.env.MESSAGE_STYLE === 'uppercase' ? message = message.toUpperCase() : message
   res.json({
-    message: 'Hello json'
+    message
   })
 })
 
 app.listen(PORT, () => {
   console.log(`Listening at http://localhost:${PORT}`)
 })
-
 
 
 
