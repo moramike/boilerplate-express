@@ -44,8 +44,6 @@ app.get('/now', (req, res, next) => {
   })
 })
 
-app.use(bodyParser.urlencoded({extended: false}))
-
 // Challenge 10 - Get query parameters
 app.get('/name', (req, res, next) => {
   if (req.query) {
