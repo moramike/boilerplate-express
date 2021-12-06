@@ -31,6 +31,16 @@ app.get('/json', (req, res) => {
   })
 })
 
+// Challenge 8 - Chain middleware to create a time server
+app.get('/now', (req, res, next) => {
+  req.time = new Date().toString()
+  next()
+}, (req, res) => {
+  res.json({
+    time: req.time
+  })
+})
+
 
 
 
