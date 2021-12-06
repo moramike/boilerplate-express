@@ -1,4 +1,4 @@
-const env = require('dotenv').config()
+require('dotenv').config()
 var express = require('express');
 var app = express();
 var path = require('path')
@@ -18,10 +18,6 @@ app.get('/json', (req, res) => {
   res.json({
     message
   })
-})
-
-app.listen(PORT, () => {
-  console.log(`Listening at http://localhost:${PORT}`)
 })
 
 
