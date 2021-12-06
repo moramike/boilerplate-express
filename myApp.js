@@ -1,7 +1,10 @@
 require('dotenv').config()
+
 var express = require('express');
 var app = express();
 var path = require('path')
+const bodyParser = require('body-parser')
+
 var PORT = 3100
 var homeRoute = path.join(__dirname, `views/index.html`)
 var assetsRoute = path.join(__dirname, `public`)
@@ -41,6 +44,8 @@ app.get('/now', (req, res, next) => {
   })
 })
 
+app.use(bodyParser.urlencoded({extended: false}))
+
 // Challenge 10 - Get query parameters
 app.get('/name', (req, res, next) => {
   if (req.query) {
@@ -52,6 +57,9 @@ app.get('/name', (req, res, next) => {
   res.json({
     name: req.fullName
   })
+  // Challenge 11 - Handle urlencoded POST request
+}).post('/name', bodyParser.urlencoded({extended: false}), (req, res) => {
+  next()
 })
 
 // Challenge 9 - Build an echo server
