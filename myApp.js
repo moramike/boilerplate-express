@@ -41,15 +41,25 @@ app.get('/now', (req, res, next) => {
   })
 })
 
+// Challenge 10 - Get query parameters
+app.get('/name', (req, res, next) => {
+  if (req.query) {
+    console.log(req.query)
+    req.fullName = `${req.query['first']} ${req.query['last']}`
+  }
+  next()
+}, (req, res) => {
+  res.json({
+    name: req.fullName
+  })
+})
+
 // Challenge 9 - Build an echo server
 app.get('/:word/echo', (req, res) => {
   res.json({
     echo: req.params.word
   })
 })
-
-
-
 
 
 
