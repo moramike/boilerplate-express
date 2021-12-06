@@ -11,6 +11,12 @@ app.get('/', (req, res) => {
   res.sendFile(homeRoute)
 })
 
+app.get('/json', (req, res) => {
+  res.json({
+    message: 'Hello json'
+  })
+})
+
 app.listen(PORT, () => {
   console.log(`Listening at http://localhost:${PORT}`)
 })
